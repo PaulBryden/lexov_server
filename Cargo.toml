@@ -12,3 +12,5 @@ lexov_core = { git = "https://github.com/PaulBryden/lexov_core", branch="main"}
 serde = "1.0.126"
 serde_json = "1.0.64"
 rand = "0.8.4"
+lazy_static = "1.4.0"
+mut_static = "5.0.0"
