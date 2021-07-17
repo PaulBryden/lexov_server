@@ -1,0 +1,11 @@
+[package]
+name = "lexov_server"
+version = "0.1.0"
+authors = ["Paul Bryden <p.d.bry@outlook.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+tungstenite = "0.14.0"
+lexov_core = { git = "https://github.com/PaulBryden/lexov_core", branch="main"}
