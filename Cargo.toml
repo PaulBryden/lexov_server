@@ -9,3 +9,6 @@ edition = "2018"
 [dependencies]
 tungstenite = "0.14.0"
 lexov_core = { git = "https://github.com/PaulBryden/lexov_core", branch="main"}
+serde = "1.0.126"
+serde_json = "1.0.64"
+rand = "0.8.4"
