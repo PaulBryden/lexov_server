@@ -14,7 +14,7 @@ pub mod PlayerTracker
                 }
         }
     }
-    
+        //remove player with UUID
         pub fn remove(& mut self, uuid: u64)
         {
             let mut i:usize =0;
@@ -28,13 +28,14 @@ pub mod PlayerTracker
                 }
             }
         }
+        //add or update player
         pub fn update(& mut self, player: Player)
         { 
             let mut i:usize =0;
             while i < self.playList.players.len() {
                 if self.playList.players[i].uuid==player.uuid{
                     self.playList.players[i].position=player.position;
-                    break;
+                    return;
                     // your code here
                 } else {
                     i += 1;
@@ -45,9 +46,32 @@ pub mod PlayerTracker
 
 
         
+        //Quick and dirty Get a serialized PlayerList.
         pub fn getData(& self)  -> String
         {
             match serde_json::to_string(&self.playList)
+            {
+                Ok(v) => v,
+                Err(e) => e.to_string()
+            }
+        }
+
+        
+        //Quick and dirty Get serialized PlayerList without a particular UUID.
+        pub fn getDataExcludeUUID(& self, uuid: u64)  -> String
+        {
+            let mut playListClone = self.playList.clone();
+            let mut i:usize =0;
+            while i < playListClone.players.len() {
+                if playListClone.players[i].uuid==uuid{
+                    playListClone.players.remove(i);
+                    break;
+                    // your code here
+                } else {
+                    i += 1;
+                }
+            }
+            match serde_json::to_string(&playListClone)
             {
                 Ok(v) => v,
                 Err(e) => e.to_string()
